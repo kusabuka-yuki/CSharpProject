@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.Drawing.Imaging;
+using System.Runtime.Remoting.Messaging;
 
 namespace OutputClipBoardImageDuringCharacter
 {
@@ -38,12 +39,45 @@ namespace OutputClipBoardImageDuringCharacter
                 var pythonProcess = new PythonProcess(pythonInterpreterPath, pythonScriptPath);
                 pythonProcess.StartProcess(args);
                 // 戻り値を返す。
-                return pythonProcess.GetStandardOutput();
+                return pythonProcess.GetStandardOutput("\n");
             }
             catch
             {
                 throw;
             }
+        }
+        private string RemoveSpace(string str)
+        {
+            string[] trimStr = {" ", "　"};
+            var replacedStr = str;
+            foreach(var s in trimStr)
+            {
+                replacedStr = replacedStr.Replace(s, "");
+            }
+            return replacedStr;
+        }
+        private string RemoveTellSpecialStr(string str)
+        {
+            string[] trimStr = { "(", ")", "-" };
+            var replacedStr = str;
+            foreach (var s in trimStr)
+            {
+                replacedStr = replacedStr.Replace(s, "");
+            }
+            return replacedStr;
+        }
+        private string TreatmentImageString(string imageStr)
+        {
+            var treatmentedStr = imageStr;
+            if (!this.CheckNotRemoveSpace.Checked)
+            {
+                treatmentedStr = RemoveSpace(imageStr);
+            }
+            if (this.CheckBoxReadTell.Checked)
+            {
+                treatmentedStr = RemoveTellSpecialStr(imageStr);
+            }
+            return treatmentedStr;
         }
         private void BtnSubmit_Click(object sender, EventArgs e)
         {
@@ -54,10 +88,12 @@ namespace OutputClipBoardImageDuringCharacter
                 var arg = new List<string> { saveImageName };
                 // スクリーンショットの画像から文字列を読み込む
                 var imageString = GetImageDuringCharacter(arg);
+                // 文字列を加工する。
+                var treatmentedStr = TreatmentImageString(imageString);
                 // 読み込んだ文字列をテキストボックスに出力する。
-                SetTextBox(imageString);
+                SetTextBox(treatmentedStr);
                 // 読み込んだ文字列をクリップボードに設定する。
-                Clipboard.SetText(imageString);
+                Clipboard.SetText(treatmentedStr);
             }
             catch (Exception ex)
             {

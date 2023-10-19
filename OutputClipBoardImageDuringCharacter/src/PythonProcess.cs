@@ -45,14 +45,14 @@ namespace OutputClipBoardImageDuringCharacter
         {
             ExecuteProcess.Close();
         }
-        public string GetStandardOutput()
+        public string GetStandardOutput(string newLine = "")
         {
             var text = string.Empty;
             var reText = string.Empty;
             while((text = ExecuteProcess.StandardOutput.ReadLine()) != null)
             {
                 Console.WriteLine(text);
-                reText = reText + text;
+                reText = reText + text + newLine;
             }
             return reText;
         }
