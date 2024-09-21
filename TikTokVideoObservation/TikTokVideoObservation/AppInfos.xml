@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<ItemGrourp>
+		<DefaultUrl>https://www.tiktok.com/</DefaultUrl>
+		<TargetUserId>sorapaypay</TargetUserId>
+		<SavedVideoListPath>G:\マイドライブ\ドライブ\IT系\プログラミング\TikTok動画保存\TikTokVideoObservation\SavedVideoIdList</SavedVideoListPath>
+		<PythonInterpreterPath>C:\Users\Yuki\AppData\Local\Programs\Python\Python39\python.exe</PythonInterpreterPath>
+		<PythonScriptPath>G:\マイドライブ\ドライブ\IT系\プログラミング\TikTok動画保存\TikTokVideoObservation\tiktok_video_downloader.py</PythonScriptPath>
+	</ItemGrourp>
+</configuration>
