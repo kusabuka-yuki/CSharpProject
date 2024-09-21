@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using AngleSharp;
-using AngleSharp.Dom;
-using AngleSharpLoader;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using SeleniumControl;
+using System.Text.RegularExpressions;
 
 namespace TikTokLib
 {
@@ -17,7 +8,7 @@ namespace TikTokLib
     {
         private const string RegVideoIdPattern = @"\/video\/(\w+)";
 
-        public TikTokUser User { get; set; }
+        public TikTokUser? User { get; set; }
         public TikTokUrl UserVideoPage 
         { 
             get 
@@ -25,7 +16,7 @@ namespace TikTokLib
                 return new TikTokUrl(TikTok.TopPage.ToString() +  "@" + User.Id);                ;
             }
         }
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         public TikTokVideo() { }
         public TikTokVideo(TikTokUser user, string id)
@@ -57,6 +48,7 @@ namespace TikTokLib
                         return match.Groups[1].Value;
                     }).ToList();
                 }
+                return new List<string>();
             }
             catch
             {

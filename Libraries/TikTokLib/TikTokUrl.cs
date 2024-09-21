@@ -1,6 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-
-namespace TikTokLib
+﻿namespace TikTokLib
 {
     public class TikTokUrl : Uri
     {

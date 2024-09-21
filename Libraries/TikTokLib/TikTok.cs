@@ -1,19 +1,9 @@
-﻿using AngleSharp.Dom;
-using AngleSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
-
-namespace TikTokLib
+﻿namespace TikTokLib
 {
     public class TikTok
     {
         public static TikTokUrl TopPage = new TikTokUrl("https://www.tiktok.com");
-        public TikTokUser User { get; set; }
+        public TikTokUser? User { get; set; }
         public TikTok() { }
         public TikTok(TikTokUser user) 
         {
