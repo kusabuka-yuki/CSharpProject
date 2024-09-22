@@ -13,17 +13,21 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Xml" Version="8.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\..\GitHub\CSharpProject\Libraries\PythonProcess\PythonProcess\PythonProcess.csproj" />
-    <ProjectReference Include="..\SeleniumControl\SeleniumControl.csproj" />
-    <ProjectReference Include="..\TikTokLib\TikTokLib.csproj" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.25.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="AngleSharpLoader">
       <HintPath>..\..\..\..\GitHub\CSharpProject\Libraries\AngleSharpLoader\AngleSharpLoader.dll</HintPath>
+    </Reference>
+    <Reference Include="PythonProcess">
+      <HintPath>..\..\Libraries\PythonProcess\PythonProcess.dll</HintPath>
+    </Reference>
+    <Reference Include="SeleniumControl">
+      <HintPath>..\..\Libraries\SeleniumControl\SeleniumControl.dll</HintPath>
+    </Reference>
+    <Reference Include="TikTokLib">
+      <HintPath>..\..\Libraries\TikTokLib\TikTokLib.dll</HintPath>
     </Reference>
   </ItemGroup>
 
